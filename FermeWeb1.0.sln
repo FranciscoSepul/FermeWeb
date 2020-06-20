@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FermeWeb1.0", "FermeWeb1.0\FermeWeb1.0.csproj", "{F836D717-F8D3-4ABF-8BBB-601235039155}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F836D717-F8D3-4ABF-8BBB-601235039155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F836D717-F8D3-4ABF-8BBB-601235039155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F836D717-F8D3-4ABF-8BBB-601235039155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F836D717-F8D3-4ABF-8BBB-601235039155}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {000F1B83-046B-417C-9DF5-29686EC23E96}
+	EndGlobalSection
+EndGlobal
