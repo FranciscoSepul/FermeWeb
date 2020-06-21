@@ -7,7 +7,7 @@ namespace FermeWeb1._0.Models
 {
     public class OrdenesCompra
     {
-        public int id { get; set }
+        public int id { get; set; }
         public int idSuc { get; set; }
         public int idProveedor { get; set; }
         public string fecha { get; set; }
