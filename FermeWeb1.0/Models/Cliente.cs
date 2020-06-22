@@ -18,6 +18,7 @@ namespace FermeWeb1._0.Models
         public string correoCli { get; set; }
         public string contrasena { get; set; }
 
+        public Direccion direccion{ get; set; }
         public Cliente()
         {
             Init();
@@ -35,8 +36,9 @@ namespace FermeWeb1._0.Models
             this.sexo = 0;
             this.correoCli = "";
             this.contrasena = "";
+            this.direccion = new Direccion();
         }
-        public void cliente(int id, int idDireccion, string runCliente, string digitoVerif, int estado, string nombre, string apellido, int sexo, string correoCli, string contrasena)
+        public void cliente(int id, int idDireccion, string runCliente, string digitoVerif, int estado, string nombre, string apellido, int sexo, string correoCli, string contrasena,Direccion direccion)
         {
             this.id = id;
             this.idDireccion = idDireccion;
@@ -48,6 +50,7 @@ namespace FermeWeb1._0.Models
             this.sexo = sexo;
             this.correoCli = correoCli;
             this.contrasena = contrasena;
+            this.direccion = direccion;
 
         }
 

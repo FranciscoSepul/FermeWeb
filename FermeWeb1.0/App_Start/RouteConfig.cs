@@ -16,7 +16,7 @@ namespace FermeWeb1._0
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Cliente", action = "clientes", id = UrlParameter.Optional }
+                defaults: new { controller = "Cliente", action = "buscarRut", id = UrlParameter.Optional }
             );
         }
     }
