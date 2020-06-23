@@ -19,7 +19,7 @@ namespace FermeWeb1._0.Controllers
         //Deserializar
         public List<Empleado> empleados()
         {
-            string url = "empleado/todos/" + tokenEmpleado;
+            string url = "/Empleado/todos/" + tokenEmpleado;
             string resultado = new HerramientasController().calling(url);
             empleadoList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Empleado>>(resultado);
             return empleadoList;
@@ -29,7 +29,7 @@ namespace FermeWeb1._0.Controllers
         public Empleado buscarRun()
         {
             string run = "19557236";
-            string url = "/empleado/buscar/" + run + "/" + tokenEmpleado;
+            string url = "/Empleado/buscar/" + run + "/" + tokenEmpleado;
             string resultado = new HerramientasController().calling(url);
             empleado = Newtonsoft.Json.JsonConvert.DeserializeObject<Empleado>(resultado);
             return empleado;
