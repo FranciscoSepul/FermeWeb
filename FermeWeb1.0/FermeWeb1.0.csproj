@@ -276,6 +276,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Header.html" />
+    <Content Include="Imagenes\excel.png" />
+    <Content Include="Imagenes\FERME Logo.png" />
+    <Content Include="Imagenes\Productos\KitHerramienta.png" />
+    <Content Include="Imagenes\Productos\MOTOSIERRA_STIHL_MS-180C.jpg" />
+    <Content Include="Imagenes\Productos\Polpaico.jpg" />
+    <Content Include="Imagenes\Productos\STANMartillo.jpg" />
+    <Content Include="Imagenes\Search.png" />
+    <Content Include="Imagenes\userAdmin.png" />
+    <Content Include="Imagenes\userAll.png" />
+    <Content Include="Imagenes\userFemale.png" />
+    <Content Include="Imagenes\userMen.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -306,6 +318,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="css\" />
+    <Folder Include="JavasScript\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Herramientas\" />
   </ItemGroup>
