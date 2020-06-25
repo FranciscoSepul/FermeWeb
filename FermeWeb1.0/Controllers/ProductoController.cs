@@ -16,7 +16,7 @@ namespace FermeWeb1._0.Controllers
         Producto producto = new Producto();
 
         //Deserializar
-        public List<Producto> productos()
+        public List<Producto> buscarTodos()
         {
             string url = "/Producto/todos/" + tokenProducto;
             string resultado = new HerramientasController().calling(url);
