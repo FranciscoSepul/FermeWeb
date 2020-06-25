@@ -315,6 +315,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Cliente\LogIn.cshtml" />
     <Content Include="Views\Cliente\Registrar.cshtml" />
+    <Content Include="Views\Cliente\Recuperar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

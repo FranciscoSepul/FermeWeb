@@ -1,4 +1,5 @@
 ﻿using FermeWeb1._0.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
@@ -23,23 +24,22 @@ namespace FermeWeb1._0.Controllers
             resultados = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Cliente>>(resul);
             return resultados;
         }
-        public ActionResult buscarRut()
+        public Cliente buscarRut(string run)
         {
-            string run = "12423531";
+           
             string url = "/clientes/buscar/" + run + "/" + tokenl;
             string resul = new HerramientasController().calling(url);
             resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);
-            return View("Registrar");
+            return resultado;
         }
 
         //[HttpPost]
         public ActionResult LogIn(string correo, string pass)
         {
-            //string co = "Juan@gmail.com";
-            //string pass = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
+            
             string url = "/clientes/login/" + correo + "/" + pass + "/" + tokenl;
             string resul = new HerramientasController().calling(url);
-            resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);
+            resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);            
             return View("LogIn");
         }
         public ActionResult Registrar()
@@ -51,6 +51,41 @@ namespace FermeWeb1._0.Controllers
             resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);
             return View("Registrar");
         }
+        public ActionResult enviarClave(string runCli,string correo)
+        {
+            Cliente cli = buscarRut(runCli);
+            string asunto = "Recuperacion de Password";
+            Boolean desc=true;
+            int cambio = 1;
+            if (cli.correoCli!=correo)
+            {
+                desc = false;
+            }
+            else
+            {
+                string pass = cli.nombre.Substring(0, 3)+cli.apellido.Substring(1, 2)+cli.runCliente.Substring(3, 4);
+                string url = "/clientes/CambiarPass/" + runCli + "/" + pass + "/" + cambio + "/" + tokenl;
+                string cuerpo =new HerramientasController().correoPass(pass,correo);
+                string resul = new HerramientasController().calling(url);
+                if(resul!= "Exito")
+                {
+                    desc = false;
+                }
+                else
+                {
+                    var resultadosmtp = new HerramientasController().Smtp(correo, asunto, cuerpo);
+                    desc = true;
+                }
+                
+            }                    
+            
+            return View("Registrar",desc);
+        }
+        public ActionResult Recuperar()
+        {
+            return View("Recuperar");
+        }
+
     }
 }
 
