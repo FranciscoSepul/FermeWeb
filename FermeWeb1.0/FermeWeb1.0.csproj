@@ -273,6 +273,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\Iframe.css" />
+    <Content Include="css\panelAjustarResp.css" />
+    <Content Include="css\panelLo.css" />
+    <Content Include="css\Header.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -318,7 +322,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="css\" />
     <Folder Include="JavasScript\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Herramientas\" />
