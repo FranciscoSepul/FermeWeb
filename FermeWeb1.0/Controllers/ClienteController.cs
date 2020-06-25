@@ -16,6 +16,10 @@ namespace FermeWeb1._0.Controllers
         {
             return View("LogIn");
         }
+        public ActionResult RegistrarIndex()
+        {
+            return View("Registrar");
+        }
 
         public List<Cliente> clientes()
         {
@@ -42,14 +46,11 @@ namespace FermeWeb1._0.Controllers
             resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);            
             return View("LogIn");
         }
-        public ActionResult Registrar()
+        public ActionResult Registrar(string run, string dv, string nombre, string apellido, string sexo, string correo, string pass, string region, string comuna, string pasaje, string numero, string numeroDepto)
         {
-            string co = "Juan@gmail.com";
-            string pass = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
-            string url = "/clientes/login/" + co + "/" + pass + "/" + tokenl;
+            string url ="/clientes/crear/"+run+"/"+dv+"/"+nombre+"/"+apellido+"/"+sexo+"/"+correo+"/"+pass+"/"+region+"/"+comuna+"/"+pasaje+"/"+numero+"/"+numeroDepto+"/"+ tokenl;
             string resul = new HerramientasController().calling(url);
-            resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);
-            return View("Registrar");
+            return View("LogIn");
         }
         public ActionResult enviarClave(string runCli,string correo)
         {
