@@ -6,10 +6,10 @@
 <link href="~/css/Iframe.css" rel="stylesheet">
 <link href="~/css/panelLo.css" rel="stylesheet" >
 <link href="~/css/panelAjustarResp.css" rel="stylesheet">
-<head>
-    <iframe class="responsive-iframe" src="~/Header.html"></iframe>
-</head>
+
+    
 <body>
+    <iframe class="responsive-iframe" src="~/Header"></iframe>
     <div class="container center-block">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -17,10 +17,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-6">
-                                <li>@Html.ActionLink("LogIn", "index", "Cliente")</li>
+                                @Html.ActionLink("LogIn", "index", "Cliente")
                             </div>
                             <div class="col-xs-6">
-                                <li>@Html.ActionLink("Registrarme", "RegistrarIndex", "Cliente")</li>
+                                @Html.ActionLink("Registrarme", "RegistrarIndex", "Cliente")
                             </div>
                         </div>
                         <hr>
@@ -30,15 +30,15 @@
                             <div class="col-lg-12">
                                 <form id="login-form" action="LogIn" method="post" role="form" style="display: block;">
                                     <div class="form-group">
-                                        <input type="text" name="correo" id="username" tabindex="1" class="form-control" placeholder="Correo" value="">
+                                        <input type="text" name="correo" id="correo" tabindex="2" class="form-control" placeholder="Correo">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="pass" id="password" tabindex="2" class="form-control" placeholder="Contraseña">
+                                        <input type="password" name="pass" id="pass" tabindex="2" class="form-control" placeholder="Contraseña">
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Ingresar">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="Ingresar">
                                             </div>
                                         </div>
                                     </div>
@@ -58,5 +58,5 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 </body>

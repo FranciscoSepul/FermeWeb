@@ -281,7 +281,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Header.html" />
+    <None Include="Header.cshtml" />
     <Content Include="Imagenes\excel.png" />
     <Content Include="Imagenes\FERME Logo.png" />
     <Content Include="Imagenes\Productos\KitHerramienta.png" />
@@ -319,6 +319,7 @@
     <Content Include="Views\Cliente\Registrar.cshtml" />
     <Content Include="Views\Cliente\Recuperar.cshtml" />
     <Content Include="Views\Home\Producto.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

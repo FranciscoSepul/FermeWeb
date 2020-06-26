@@ -13,8 +13,8 @@ header {
 .wrapper {
     width: 510%;
     max-width: 1000px;
-    margin: auto; /* Centramos los elementos */
-    overflow: hidden; /* Eliminamos errores de float */
+    margin: auto;
+    overflow: hidden; 
 }
 
 header .logo {

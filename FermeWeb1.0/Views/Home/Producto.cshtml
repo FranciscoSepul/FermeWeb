@@ -1,5 +1,4 @@
-﻿@model IEnumerable<FermeWeb1._0.Models.Producto>
-
+﻿@model FermeWeb1._0.Models.Cliente
 @{
     ViewBag.Title = "Producto";
 }
@@ -7,20 +6,23 @@
 <link href="~/css/Iframe.css" rel="stylesheet">
 <link href="~/css/panelLo.css" rel="stylesheet">
 <link href="~/css/panelAjustarResp.css" rel="stylesheet">
-
-<head>
-    <iframe class="responsive-iframe" src="~/Header.html"></iframe>
-</head>
+<iframe class="responsive-iframe" src="~/Header"></iframe>
 
 <body>
-    <h1>aca van los datos de los productos si me ejecutas me tapara el iframe</h1>
+    <h1>aca van los datos de los productos si me ejecutas me tapara el iframe </h1>
+    @if (Model!=null)
+    {
+        <h1>dentro del if </h1>
+       <p>@Model.apellido</p>
+    }
+    
     <div class="navBar">
-        <ul class="navBar-content">
+        @*<ul class="navBar-content">
             <li class="navBar-options" data-url="/Herramientas_maquinarias" data-w="1280">Herramientas y Maquinaria</li>
             <li class="navBar-options" data-url="/Airelibre_jardin" data-w="1280">Aire Libre y Jardín</li>
             <li class="navBar-options" data-url="/Decoracion_iluminacion" data-w="1280">Decoración e Iluminación</li>
             <li class="navBar-options" data-url="/Muebles_organizacion" data-w="1280">Muebles y Organización</li>
             <li class="navBar-options __separator" data-w="1280"></li>
-        </ul>
+        </ul>*@
     </div>
 </body>
