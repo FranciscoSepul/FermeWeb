@@ -10,19 +10,20 @@
 
 <body>
     <h1>aca van los datos de los productos si me ejecutas me tapara el iframe </h1>
-    @if (Model!=null)
+    @if (Model.apellido != null)
     {
         <h1>dentro del if </h1>
-       <p>@Model.apellido</p>
+        <p>@Model.apellido</p>
+        <h1>@Model.nombre </h1>
     }
-    
+
     <div class="navBar">
         @*<ul class="navBar-content">
-            <li class="navBar-options" data-url="/Herramientas_maquinarias" data-w="1280">Herramientas y Maquinaria</li>
-            <li class="navBar-options" data-url="/Airelibre_jardin" data-w="1280">Aire Libre y Jardín</li>
-            <li class="navBar-options" data-url="/Decoracion_iluminacion" data-w="1280">Decoración e Iluminación</li>
-            <li class="navBar-options" data-url="/Muebles_organizacion" data-w="1280">Muebles y Organización</li>
-            <li class="navBar-options __separator" data-w="1280"></li>
-        </ul>*@
+                <li class="navBar-options" data-url="/Herramientas_maquinarias" data-w="1280">Herramientas y Maquinaria</li>
+                <li class="navBar-options" data-url="/Airelibre_jardin" data-w="1280">Aire Libre y Jardín</li>
+                <li class="navBar-options" data-url="/Decoracion_iluminacion" data-w="1280">Decoración e Iluminación</li>
+                <li class="navBar-options" data-url="/Muebles_organizacion" data-w="1280">Muebles y Organización</li>
+                <li class="navBar-options __separator" data-w="1280"></li>
+            </ul>*@
     </div>
 </body>

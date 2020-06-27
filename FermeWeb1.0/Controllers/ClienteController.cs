@@ -29,8 +29,7 @@ namespace FermeWeb1._0.Controllers
             return resultados;
         }
         public Cliente buscarRut(string run)
-        {
-           
+        {           
             string url = "/clientes/buscar/" + run + "/" + tokenl;
             string resul = new HerramientasController().calling(url);
             resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);
@@ -39,8 +38,7 @@ namespace FermeWeb1._0.Controllers
 
      
         public Cliente LogIn(string correo, string pass)
-        {
-            
+        {            
             string url = "/clientes/login/" + correo + "/" + pass + "/" + tokenl;
             string resul = new HerramientasController().calling(url);
             resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);
