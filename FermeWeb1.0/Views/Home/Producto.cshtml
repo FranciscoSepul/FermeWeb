@@ -102,24 +102,29 @@
     </div>
     <!--/.Carousel Wrapper-->
 
-
-    <div class="grid-wrapper">
-        <div class="container" id="contenido"></div>
-        <div class="box zone"><img src="~/Imagenes/Productos/KitHerramienta.png" class="rellenar"></div>
-        <div class="box zone"><img src="~/Imagenes/Productos/MOTOSIERRA_STIHL_MS-180C.jpg"></div>
-        <div class="box zone"><img src="~/Imagenes/Productos/Polpaico.jpg"></div>
-        <div class="box zone"><img src="~/Imagenes/Productos/STANMartillo.jpg"></div>
+    <div >
+        <h1>
+            Productos Mas Vistos
+        </h1>
     </div>
-    
+    <div class="grid-wrapper">
+        @foreach (var pros in ViewData["ProductosData"] as IEnumerable<FermeWeb1._0.Models.Producto>)
+        {
+
+            <div class="container" id="contenido"></div>
+         
+            <div class="box zone">
+                <img src=@pros.rutadoc width="100" height="300" >
+                <div>@pros.nombre</div>
+                <div>$ @pros.preciouni c/u</div>
+                <div>Stock: @pros.stock</div>
+                <div> </div>
+
+            </div>
+        }
+    </div>    
 
     <footer class="">Ferreteria FERME 2020</footer>
-    @foreach (var pros in ViewData["ProductosData"] as IEnumerable<FermeWeb1._0.Models.Producto>)
-    {
-        <span id="result">@pros.nombre </span>
-
-    }
-
-    <input type="button" value="BuscarP" id="btnBuscar" />
 
 </body>
 @*si quieren aprender ajax aca un ejempli simple*@ 

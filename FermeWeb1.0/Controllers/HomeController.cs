@@ -11,7 +11,6 @@ namespace FermeWeb1._0.Controllers
     {
         public ActionResult Index()
         {
-            dynamic model = new System.Dynamic.ExpandoObject();
             List<Producto> produ = new ProductoController().productos();
             ViewData["ProductosData"] = produ;
             return View("Producto");
