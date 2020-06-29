@@ -328,6 +328,7 @@
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Herramientas\" />
     <Folder Include="Views\Producto\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

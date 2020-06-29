@@ -44,7 +44,7 @@ namespace FermeWeb1._0.Controllers
             resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);
             if (resultado!=null)
             {
-                new HomeController().Index(resultado);
+                new HomeController();
             }
             else
             {

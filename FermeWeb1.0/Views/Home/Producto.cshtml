@@ -1,4 +1,4 @@
-﻿@model FermeWeb1._0.Models.Cliente
+﻿@model List<FermeWeb1._0.Models.Producto>
 @{
     ViewBag.Title = "Producto";
 }
@@ -6,11 +6,12 @@
 <head>
     <title>Ferreteria FERME</title>
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html"><img src="~/Imagenes/FERME Logo.png" class="responsiveImage" /></a>
+        <a class="navbar-brand" href="/Home/index"><img src="~/Imagenes/FERME Logo.png" class="responsiveImage" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,9 +45,9 @@
     <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
         <!--Indicators-->
         <ol class="carousel-indicators">
-            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-1" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-2" data-slide-to="1"></li>
-            <li data-target="#carousel-example-2" data-slide-to="2"></li>
+            <li data-target="#carousel-example-3" data-slide-to="2"></li>
         </ol>
         <!--/.Indicators-->
         <!--Slides-->
@@ -103,11 +104,44 @@
 
 
     <div class="grid-wrapper">
+        <div class="container" id="contenido"></div>
         <div class="box zone"><img src="~/Imagenes/Productos/KitHerramienta.png" class="rellenar"></div>
         <div class="box zone"><img src="~/Imagenes/Productos/MOTOSIERRA_STIHL_MS-180C.jpg"></div>
         <div class="box zone"><img src="~/Imagenes/Productos/Polpaico.jpg"></div>
         <div class="box zone"><img src="~/Imagenes/Productos/STANMartillo.jpg"></div>
     </div>
+    
 
     <footer class="">Ferreteria FERME 2020</footer>
+    @foreach (var pros in ViewData["ProductosData"] as IEnumerable<FermeWeb1._0.Models.Producto>)
+    {
+        <span id="result">@pros.nombre </span>
+
+    }
+
+    <input type="button" value="BuscarP" id="btnBuscar" />
+
 </body>
+@*si quieren aprender ajax aca un ejempli simple*@ 
+@*@section scripts{
+
+    <script>
+    $(function () {
+        $("#btnBuscar").click(function () {
+            var url = "@Url.Action("productos","Producto")";
+            $.get(url).done(function (data) {
+                $("result").append(data);
+            });
+
+        });
+
+    });
+
+    </script>
+}*@
+
+
+
+
+
+
