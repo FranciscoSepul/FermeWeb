@@ -294,6 +294,8 @@
     <Content Include="Imagenes\userAll.png" />
     <Content Include="Imagenes\userFemale.png" />
     <Content Include="Imagenes\userMen.png" />
+    <Content Include="Javascript\bootstrap.js" />
+    <Content Include="Javascript\JQuery.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -324,7 +326,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="JavasScript\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Herramientas\" />
     <Folder Include="Views\Producto\" />
