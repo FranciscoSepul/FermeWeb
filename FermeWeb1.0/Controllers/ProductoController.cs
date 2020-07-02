@@ -1,8 +1,10 @@
 ﻿using FermeWeb1._0.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
@@ -34,5 +36,17 @@ namespace FermeWeb1._0.Controllers
             producto = Newtonsoft.Json.JsonConvert.DeserializeObject<Producto>(resultado);
             return producto;
         }
+        //public void setSession(object objeto)
+        //{
+        //    HttpContext.Session.Se("Carro", JsonConvert.SerializeObject(objeto));
+        //}
+        public string compras(string id,string precio,int cantidad)
+        {
+            string respuesta = "";
+
+            return respuesta;
+           
+        }
+
     }
 }

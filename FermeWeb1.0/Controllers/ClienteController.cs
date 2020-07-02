@@ -42,15 +42,19 @@ namespace FermeWeb1._0.Controllers
             string url = "/clientes/login/" + correo + "/" + pass + "/" + tokenl;
             string resul = new HerramientasController().calling(url);
             resultado = Newtonsoft.Json.JsonConvert.DeserializeObject<Cliente>(resul);
-            if (resultado!=null)
+            if (resultado.correoCli!=null)
             {
-                new HomeController();
+                new HomeController().Index(resultado);
             }
             else
             {
                 new HomeController().Error();
             }
             return resultado;
+        }
+        public ActionResult HomeP()
+        {
+            return View("Cliente/Producto");
         }
         public ActionResult Registrar(string run, string dv, string nombre, string apellido, string sexo, string correo, string pass, string region, string comuna, string pasaje, string numero, string numeroDepto)
         {

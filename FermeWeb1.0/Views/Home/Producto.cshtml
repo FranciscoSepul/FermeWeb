@@ -7,6 +7,10 @@
     <title>Ferreteria FERME</title>
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="jquery.slides.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -20,6 +24,18 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Ingrese su busqueda..." aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
+        <nav>
+            <a href="">Carro</a>
+            @if (Session["data"].ToString() =="null")
+            {
+                <a href="/Cliente/index">LogIn</a>
+            }
+            else
+            {
+                <h2>Bienvenido @Session["data"].ToString()</h2>
+            }
+
+        </nav>
     </nav>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,111 +56,117 @@
             </ul>
         </div>
     </nav>
+    @foreach (var sli in ViewData["ProductosData"] as IEnumerable<FermeWeb1._0.Models.Producto>)
+    {
+        <div id="myCarouselCustom" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarouselCustom" data-slide-to="0" class"active"></li>
+                <li data-target="#myCarouselCustom" data-slide-to="1"></li>
+                <li data-target="#myCarouselCustom" data-slide-to="2"></li>
+            </ol>
 
-    <!--Carousel Wrapper-->
-    <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
-        <!--Indicators-->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-1" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-2" data-slide-to="1"></li>
-            <li data-target="#carousel-example-3" data-slide-to="2"></li>
-        </ol>
-        <!--/.Indicators-->
-        <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
-                         alt="First slide">
-                    <div class="mask rgba-black-light"></div>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src=@sli.rutadoc alt="">
+                    <div class="carousel-caption">
+                        <h3>@sli.nombre</h3>
+                        <p>$ @sli.preciouni</p>
+
+                    </div>
                 </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Serrucho bonito</h3>
-                    <p>$10.990</p>
+                <div class="item">
+                    <img src=@sli.rutadoc alt="">
+                    <div class="carousel-caption">
+                        <h3>@sli.nombre</h3>
+                        <p>$ @sli.preciouni</p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <!--Mask color-->
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
-                         alt="Second slide">
-                    <div class="mask rgba-black-strong"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Strong mask</h3>
-                    <p>Secondary text</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <!--Mask color-->
-                <div class="view">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
-                         alt="Third slide">
-                    <div class="mask rgba-black-slight"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Slight mask</h3>
-                    <p>Third text</p>
+                <div class="item">
+                    <img src=@sli.rutadoc alt="">
+                    <div class="carousel-caption">
+                        <h3>@sli.nombre</h3>
+                        <p>$ @sli.preciouni</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--/.Slides-->
-        <!--Controls-->
-        <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-        <!--/.Controls-->
-    </div>
-    <!--/.Carousel Wrapper-->
+    }
 
-    <div >
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!-- Custom Controls -->
+    <a href="javascript:void(0);" id="prevBtn">Prev Slide</a>
+    <a href="javascript:void(0);" id="nextBtn">Next Slide</a>
+
+    <div>
         <h1>
             Productos Mas Vistos
         </h1>
     </div>
+
+
+    <br>
     <div class="grid-wrapper">
         @foreach (var pros in ViewData["ProductosData"] as IEnumerable<FermeWeb1._0.Models.Producto>)
         {
+            <form id="login-form" action="LogIn" method="post" role="form" style="display: block;">
+                <div class="container" id="contenido"></div>
 
-            <div class="container" id="contenido"></div>
-         
-            <div class="box zone">
-                <img src=@pros.rutadoc width="100" height="300" >
-                <div>@pros.nombre</div>
-                <div>$ @pros.preciouni c/u</div>
-                <div>Stock: @pros.stock</div>
-                <div> </div>
-
-            </div>
+                <div class="box zone">
+                    <img src=@pros.rutadoc width="100" height="300">
+                    <div>@pros.nombre</div>
+                    <div>$ @pros.preciouni c/u</div>
+                    <div>Stock: @pros.stock</div>
+                    <input id="comprar" tabindex="3" class="" value="Comprar">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="Comprar">
+                    </div>
+                </div>
+            </form>
         }
-    </div>    
+    </div>
 
     <footer class="">Ferreteria FERME 2020</footer>
 
 </body>
-@*si quieren aprender ajax aca un ejempli simple*@ 
+<script type="text/javascript">
+    // Call carousel manually
+    $('#myCarouselCustom').carousel();
+
+    // Go to the previous item
+    $("#prevBtn").click(function () {
+        $("#myCarouselCustom").carousel("prev");
+    });
+    // Go to the previous item
+    $("#nextBtn").click(function () {
+        $("#myCarouselCustom").carousel("next");
+    });
+</script>
+@*si quieren aprender ajax aca un ejempli simple*@
 @*@section scripts{
 
-    <script>
-    $(function () {
-        $("#btnBuscar").click(function () {
-            var url = "@Url.Action("productos","Producto")";
-            $.get(url).done(function (data) {
-                $("result").append(data);
+        <script>
+        $(function () {
+            $("#btnBuscar").click(function () {
+                var url = "@Url.Action("productos","Producto")";
+                $.get(url).done(function (data) {
+                    $("result").append(data);
+                });
+
             });
 
         });
 
-    });
-
-    </script>
-}*@
-
+        </script>
+    }*@
 
 
 
