@@ -3,13 +3,15 @@
     ViewBag.Title = "Producto";
 }
 
-<head>
-    <title>Ferreteria FERME</title>
-    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
-    <script src="~/Javascript/bootstrap.js"></script>
-    <script src="~/Javascript/JQuery.js"></script>
-    <script src="jquery.slides.min.js"></script>
-</head>
+    <head>
+        <title>Ferreteria FERME</title>
+        <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,7 +26,7 @@
         </form>
         <nav>
             <a href="">Carro</a>
-            @if (Session["data"].ToString() =="null")
+            @if (Session["data"].ToString() == "null")
             {
                 <a href="/Cliente/index">LogIn</a>
             }
@@ -120,48 +122,76 @@
 
                 <div class="box zone">
                     <img src=@pros.rutadoc width="100" height="300">
-                    <div>@pros.nombre</div>
-                    <div>$ @pros.preciouni c/u</div>
-                    <div>Stock: @pros.stock</div>
-                    <input id="comprar" tabindex="3" class="" value="Comprar">
+                    <div id="nombreP">@pros.nombre</div>
+                    <div id="precioP">$ @pros.preciouni c/u</div>
+                    <div id="stockP">Stock: @pros.stock</div>
+                    <div class="form-group">
+                        <input type="text"  id="cantidad" tabindex="2" class="form-control" placeholder="cantidad">
+                    </div>
                     <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="Comprar">
+                        <input type="button"  class="" value="Comprar" onclick="clAgregar('nombreP', 'precioP', 'cantidad')">
                     </div>
                 </div>
             </form>
         }
     </div>
-
     <footer class="">Ferreteria FERME 2020</footer>
 
 </body>
-<script type="text/javascript">
-    // Call carousel manually
-    $('#myCarouselCustom').carousel();
+    <script >
+            //Script carrusel
+            $('#myCarouselCustom').carousel();
+            $("#prevBtn").click(function () {
+                $("#myCarouselCustom").carousel("prev");
+            });
+            $("#nextBtn").click(function () {
+                $("#myCarouselCustom").carousel("next");
+            });
+             //carrusel final
 
-    // Go to the previous item
-    $("#prevBtn").click(function () {
-        $("#myCarouselCustom").carousel("prev");
-    });
-    // Go to the previous item
-    $("#nextBtn").click(function () {
-        $("#myCarouselCustom").carousel("next");
-    });
-</script>
-@*si quieren aprender ajax aca un ejempli simple*@
-@*@section scripts{
+             //Script carro
+            //final carro
+        function clAgregar(nombreP, precioP,cantidad) {
+            if ($("#" + cantidad).val() == null || $("#" + cantidad).val() == "") {
+                alert("Ingrese la cantidad" + $("#" + cantidad).text());
+                return;
+            } else {
+                alert("si hijo la perra " + $("#" + cantidad).text());
 
-        <script>
-        $(function () {
-            $("#btnBuscar").click(function () {
-                var url = "@Url.Action("productos","Producto")";
+                var datos = {
+                    "Producto": {
+                        "nombreP": $("#" + nombreP).text(),
+                        "precioP": $("#" + precioP).text(),
+                        "cantidad": $("#" + cantidad).text()
+                    }
+                };
+                $ajax({
+                    type: "POST",
+                    url: "@Url.Action("compras", "Producto")",
+                    contentType: "aplication/json: charset=utf8",
+                    dataType: "json",
+                    data: JSON.stringify(datos),
+                    succes: function () {
+
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        @*$(function () {
+            $("#btncomprar").click(function () {
+                var url = "@Url.Action("compras", "Producto")";
+                type:
                 $.get(url).done(function (data) {
                     $("result").append(data);
                 });
 
             });
 
-        });
+        });*@
+        }
 
-        </script>
-    }*@
+
+
+    </script>

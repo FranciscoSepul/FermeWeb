@@ -36,17 +36,20 @@ namespace FermeWeb1._0.Controllers
             producto = Newtonsoft.Json.JsonConvert.DeserializeObject<Producto>(resultado);
             return producto;
         }
-        //public void setSession(object objeto)
-        //{
-        //    HttpContext.Session.Se("Carro", JsonConvert.SerializeObject(objeto));
-        //}
-        public string compras(string id,string precio,int cantidad)
+        [HttpPost]
+        public string compras(Producto producto)
         {
+            if (producto!=null)
+            {
+                List<Producto> lista = new List<Producto>();
+                lista.Add(producto);
+            }
             string respuesta = "";
 
             return respuesta;
            
         }
+
 
     }
 }

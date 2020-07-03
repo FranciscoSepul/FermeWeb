@@ -48,10 +48,6 @@ namespace FermeWeb1._0.Controllers
             }          
             return RedirectToAction("Index","Home",resultado);
         }
-        public ActionResult HomeP()
-        {
-            return View("Cliente/Producto");
-        }
         public ActionResult Registrar(string run, string dv, string nombre, string apellido, string sexo, string correo, string pass, string region, string comuna, string pasaje, string numero, string numeroDepto)
         {
             string url ="/clientes/crear/"+run+"/"+dv+"/"+nombre+"/"+apellido+"/"+sexo+"/"+correo+"/"+pass+"/"+region+"/"+comuna+"/"+pasaje+"/"+numero+"/"+numeroDepto+"/"+ tokenl;
