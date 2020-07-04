@@ -37,13 +37,13 @@ namespace FermeWeb1._0.Controllers
             return producto;
         }
         [HttpPost]
-        public string compras(Producto producto)
+        public string compras(string cantidad,string nombre)
         {
-            if (producto!=null)
-            {
-                List<Producto> lista = new List<Producto>();
-                lista.Add(producto);
-            }
+            //if (prod!=null)
+            //{
+            //    //List<Producto> lista = new List<Producto>();
+            //    //lista.Add(producto);
+            //}
             string respuesta = "";
 
             return respuesta;
