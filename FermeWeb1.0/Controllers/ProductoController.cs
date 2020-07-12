@@ -40,6 +40,12 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
+        public ActionResult RealizarCompra()
+        {
+          
+            List<Producto> lista = JsonConvert.DeserializeObject<List<Producto>>(getSession());
+            return View();
+        }
         [HttpGet]
         public string llenar()
         {

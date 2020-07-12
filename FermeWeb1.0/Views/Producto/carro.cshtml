@@ -59,6 +59,7 @@
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Monto</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="tbdyPedidos"></tbody>
@@ -69,6 +70,29 @@
             </tr>
         </tfoot>
     </table>
+    <form action="/Producto/RealizarCompra">
+        <input type="submit" value="Comprar" />
+    </form>
+    <div class="modal fade" id="modalEditarCantidad" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Cantidad</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Nombre :<label id="nombre"></label><br />
+                    Precio :<label id="Precio"></label><br />
+                    Cantidad :<input type="text" id="txtcantidad" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAceptarCantidad">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
     $(function () {
 
@@ -87,6 +111,9 @@
                     tbody += "<td>" + info[i].preciouni + "</td>";
                     tbody += "<td>" + info[i].cantidad + "</td>";
                     tbody += "<td>" + total + "</td>" + "</td>";
+                    tbody += "<td>";
+                    tbody += "<input type='button' id='btnEditar' value='Editar' class='btn-sm btn-warning'/>";
+                    tbody += "&nbsp;<input type='button' id='btnEliminar' value='Eliminar' class='btn-sm btn-danger' />";
                     tbody += "</tr>";
                     $("#tbdyPedidos").append(tbody);
                     fnmsumar();
@@ -103,4 +130,36 @@
             });
             $("#lblTotal").text(total);
         }
+
+        var col_nombre;
+        var col_precio;
+        var col_cantidad;
+        var popup;
+
+        $(document).on("click", "#btnEditar").click(function () {
+            alert("Entro AL EDITAR");
+            popup = $("#modalEditarCantidad");
+            col_nombre = $(this).closest("tr").find("td").eq().text(0);
+            col_precio = $(this).closest("tr").find("td").eq().text(1);
+            col_cantidad = $(this).closest("tr").find("td").eq().text(2);
+
+            popup.find("#nombre").text(col_nombre);
+            popup.find("#Precio").text(col_precio);
+            popup.find("#txtcantidad").val(col_cantidad.text());
+            popup.modal();
+        });
+        //function editar() {
+        //    $(document).on('#btnEditar', function () {
+        //        alert("Entro AL EDITAR" );
+        //        popup = $("#modalEditarCantidad");
+        //        col_nombre = $(this).closest("tr").find("td").eq().text(0);
+        //        col_precio = $(this).closest("tr").find("td").eq().text(1);
+        //        col_cantidad = $(this).closest("tr").find("td").eq().text(2);
+
+        //        popup.find("#nombre").text(col_nombre);
+        //        popup.find("#Precio").text(col_precio);
+        //        popup.find("#txtcantidad").val(col_cantidad.text());
+        //        popup.modal();
+        //    });
+        //}
     </script>
