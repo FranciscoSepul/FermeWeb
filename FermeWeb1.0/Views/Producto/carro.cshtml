@@ -6,41 +6,101 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Monto</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody id="tbdyPedidos"></tbody>
-    <tfoot>
-        <tr>
-            <td colspan="4" class="text-xl-right">Total</td>
-            <td><label id="lblTotal"></label></td>
-        </tr>
-    </tfoot>
-</table>
-<script>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/Home/index"><img src="~/Imagenes/FERME Logo.png" class="responsiveImage" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Ingrese su busqueda..." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        <nav>
+            <a href="/Producto/carro"><img src="~/Imagenes/carrito.png" class="responsiveImage" /></a>
+            @if (Session["data"].ToString() == "null")
+            {
+                <a href="/Cliente/index">LogIn</a>
+            }
+            else
+            {
+                <h2>Bienvenido @Session["data"].ToString()</h2>
+            }
+
+        </nav>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Herramientas y Maquinaria</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Aire Libre y Jardín</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Decoración e Iluminación</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Muebles y Organización</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody id="tbdyPedidos"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-xl-right">Total</td>
+                <td><label id="lblTotal"></label></td>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
     $(function () {
-        
+
         $.ajax({
             type: "GET",
             url: '@Url.Action("llenar", "Producto")',
             dataType: "aplication/json; charset=utf-8",
             dataType: "json",
-        }).done(function (info) {            
-            for (var i = 0; i < info.length; i++) {
-                var total = info[i].preciouni * info[i].cantidad;
-                var tbody = "<tr>" + "<td>" + info[i].nombre + "</td>" + "<td>" + info[i].preciouni + "</td>" +
-                    "<td>" + info[i].cantidad + "</td>" + "<td>" + total + "</td>" + "</td>" + "</tr>";
-                $("#tbdyPedidos").append(tbody);
-            };
-            console.log(info);
+        }).done(function (info) {
+            if (typeof info != "undefined") {
+
+                for (var i = 0; i < info.length; i++) {
+                    var total = info[i].preciouni * info[i].cantidad;
+                    var tbody = "<tr>";
+                    tbody += "<td>" + info[i].nombre + "</td>";
+                    tbody += "<td>" + info[i].preciouni + "</td>";
+                    tbody += "<td>" + info[i].cantidad + "</td>";
+                    tbody += "<td>" + total + "</td>" + "</td>";
+                    tbody += "</tr>";
+                    $("#tbdyPedidos").append(tbody);
+                    fnmsumar();
+                };
+
+            }
         });
     });
-</script>
+        function fnmsumar() {
+            var total = 0;
+            $("#tbdyPedidos").find("tr").each(function () {
+                var monto = parseFloat($(this).find("td").eq(3).text())
+                total += monto;
+            });
+            $("#lblTotal").text(total);
+        }
+    </script>

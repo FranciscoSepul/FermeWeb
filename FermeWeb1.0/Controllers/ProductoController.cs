@@ -21,7 +21,6 @@ namespace FermeWeb1._0.Controllers
 
         public List<Producto> productos()
         {
-
             string url = "/Producto/todos/" + tokenProducto;
             string resultado = new HerramientasController().calling(url);
             productoList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Producto>>(resultado);
