@@ -14,7 +14,7 @@ namespace FermeWeb1._0.Controllers
             string nombre = "null";
             if (objeto.correoCli!="")
             {
-                nombre = objeto.nombre.ToString();                
+                nombre = objeto.correoCli.ToString();                
             }
             System.Web.HttpContext.Current.Session["data"] = nombre;
             List<Producto> produ = new ProductoController().productos();

@@ -12,11 +12,11 @@ namespace FermeWeb1._0.Controllers
     {
         string tokenl = ConfigurationManager.AppSettings["tokenF"].ToString();
 
-        public ActionResult crear(int idCli, int idDetalle, int idDoc, int idRetiro, int idEmp, int idFormaPago)
+        public Boolean crear(string mailClie, int idDetalle, int idDoc, int idRetiro, int idEmp, int idFormaPago)
         {
-            string url = "/Ventas/crear/" + idCli + "/" + idDetalle + "/" + idDoc + "/" + idRetiro + "/" + idEmp + "/" + idFormaPago + "/" + tokenl;
+            string url = "/Ventas/crear/" + mailClie + "/" + idDetalle + "/" + idDoc + "/" + idRetiro + "/" + idEmp + "/" + idFormaPago + "/" + tokenl;
             string resul = new HerramientasController().calling(url);
-            return View("Home");
+            return true;
         }
     }
 }

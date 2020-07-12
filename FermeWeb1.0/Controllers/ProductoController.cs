@@ -40,10 +40,15 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
-        public ActionResult RealizarCompra()
+        public ActionResult RealizarCompra(String nombre)
         {
-          
+            var mail = Session["data"].ToString();
             List<Producto> lista = JsonConvert.DeserializeObject<List<Producto>>(getSession());
+            for (int i = 0; i < lista.Count; i++)
+            {
+
+                //var result = new VentasController().crear(mail,idDetalle,idDoc,idRetiro,idEmp,idFormaPago);
+            }
             return View();
         }
         [HttpGet]
