@@ -323,12 +323,12 @@
     <Content Include="Views\Cliente\Recuperar.cshtml" />
     <Content Include="Views\Home\Producto.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Producto\carro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Herramientas\" />
-    <Folder Include="Views\Producto\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

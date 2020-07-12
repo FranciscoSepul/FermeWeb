@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Producto";
 }
-
+<!DOCTYPE html>
 <head>
     <title>Ferreteria FERME</title>
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
@@ -25,7 +25,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
         <nav>
-            <a href="">Carro</a>
+            <a href="/Producto/carro">Carro</a>
             @if (Session["data"].ToString() == "null")
             {
                 <a href="/Cliente/index">LogIn</a>
@@ -61,7 +61,7 @@
         <div id="myCarouselCustom" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#myCarouselCustom" data-slide-to="0" class"active"></li>
+                <li data-target="#myCarouselCustom" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarouselCustom" data-slide-to="1"></li>
                 <li data-target="#myCarouselCustom" data-slide-to="2"></li>
             </ol>
@@ -117,18 +117,18 @@
     <div class="grid-wrapper">
         @foreach (var pros in ViewData["ProductosData"] as IEnumerable<FermeWeb1._0.Models.Producto>)
         {
-        <div class="box zone">
-            <img src=@pros.rutadoc width="100" height="300">
-            <label id="nombre_@pros.id">@pros.nombre</label>
-            <div id="precio_@pros.id">$ @pros.preciouni c/u</div>
-            <div id="stock_@pros.id">Stock: @pros.stock</div>
-            <div class="form-group"> 
-                <input type="text" id="cantidad_@pros.id" tabindex="2" class="form-control" placeholder="cantidad"/>
+            <div class="box zone">
+                <img src=@pros.rutadoc width="100" height="300">
+                <label id="nombre_@pros.id">@pros.nombre</label>
+                <label id="preciouni_@pros.id">@pros.preciouni</label>
+                <div id="stock_@pros.id">Stock: @pros.stock</div>
+                <div class="form-group">
+                    <input type="text" id="cantidad_@pros.id" tabindex="2" class="form-control" placeholder="cantidad" />
+                </div>
+                <div class="col-sm-6 col-sm-offset-3">
+                    <input type="button" value="Comprar" onclick="clAgregar('nombre_@pros.id','cantidad_@pros.id','preciouni_@pros.id')" />
+                </div>
             </div>
-            <div class="col-sm-6 col-sm-offset-3">
-                <input type="button" value="Comprar" onclick="clAgregar('nombre_@pros.id','cantidad_@pros.id')"/>
-            </div>
-        </div>
         }
     </div>
     <footer class="">Ferreteria FERME 2020</footer>
@@ -148,23 +148,31 @@
 
     //Script carro
     //final carro
-    function clAgregar(nombre, cantidad) { 
+    function clAgregar(nombre, cantidad,preciouni) {        
         if ($("#" + cantidad).val() == null || $("#" + cantidad).val() == "") {
             alert("Ingrese la cantidad" + $("#" + cantidad).val());
             return;
 
         } else {
+            alert("precio" + $("#" + preciouni).text());
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("compras", "Producto")',
-                data: { 'cantidad': $("#" + cantidad).val(), 'nombre': $("#" + nombre).text() },
-                succes: function () {
+                dataType: "aplication/json; charset=utf-8",
+                dataType: "json",
+                data: {
+                    "prod":
+                    {
+                        'nombre': $("#" + nombre).text(),
+                        'cantidad': $("#" + cantidad).val(),
+                        'preciouni': $("#" + preciouni).text()
 
-                },
-                error: function () {
-
+                    }
                 }
-            });
+            }).done(function (info)
+            {                
+                console.log(info);
+            })
         }
     }
 

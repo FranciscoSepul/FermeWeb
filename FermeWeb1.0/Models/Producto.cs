@@ -15,6 +15,7 @@ namespace FermeWeb1._0.Models
         public int stock { get; set; }
         public int preciouni { get; set; }
         public string rutadoc { get; set; }
+        public int cantidad { get; set; }
 
         public Producto()
         {
@@ -31,9 +32,10 @@ namespace FermeWeb1._0.Models
             this.stock = 0;
             this.preciouni = 0;
             this.rutadoc = "";
+            this.cantidad = 0;
         }
 
-        public void producto(int id, int idTipoProducto, int idSucursal, int idProveedor, string nombre, int stock, int preciouni, string rutadoc)
+        public void producto(int id, int idTipoProducto, int idSucursal, int idProveedor, string nombre, int stock, int preciouni, string rutadoc,int cantidad)
         {
             this.id = id;
             this.idTipoProducto = idTipoProducto;
@@ -43,6 +45,7 @@ namespace FermeWeb1._0.Models
             this.stock = stock;
             this.preciouni = preciouni;
             this.rutadoc = rutadoc;
+            this.cantidad = cantidad;
         }
     }
 }
