@@ -54,7 +54,7 @@ namespace FermeWeb1._0.Controllers
                 int idretiro = 1;
                 string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
             }
-            return View();
+            return View("VentaRealizada");
         }
         [HttpGet]
         public string llenar()

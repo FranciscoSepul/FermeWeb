@@ -134,3 +134,4 @@ C:\Desarrollo\FermeWeb1.0\FermeWeb1.0\obj\Debug\FermeWeb.csproj.App.config
 C:\Desarrollo\FermeWeb1.0\FermeWeb1.0\obj\Debug\FermeWeb.csproj.CopyComplete
 C:\Desarrollo\FermeWeb1.0\FermeWeb1.0\obj\Debug\FermeWeb1.0.dll
 C:\Desarrollo\FermeWeb1.0\FermeWeb1.0\obj\Debug\FermeWeb1.0.pdb
+C:\Desarrollo\FermeWeb1.0\FermeWeb1.0\obj\Debug\FermeWeb.csprojAssemblyReference.cache
