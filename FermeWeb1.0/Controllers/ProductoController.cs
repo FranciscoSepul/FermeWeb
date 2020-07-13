@@ -52,7 +52,7 @@ namespace FermeWeb1._0.Controllers
                 int tipoDoc = 1;
                 string ruta = "F";
                 int idretiro = 1;
-                Boolean result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
+                string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
             }
             return View();
         }
