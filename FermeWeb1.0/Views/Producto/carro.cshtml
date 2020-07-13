@@ -22,13 +22,15 @@
         </form>
         <nav>
             <a href="/Producto/carro"><img src="~/Imagenes/carrito.png" class="responsiveImage" /></a>
+            <a class="circulo" id="cantidad"></a>
             @if (Session["data"].ToString() == "null")
             {
                 <a href="/Cliente/index">LogIn</a>
             }
             else
             {
-                <h2>Bienvenido @Session["data"].ToString()</h2>
+
+                <a>&nbsp;Bienvenido @Session["data"].ToString()</a>
             }
 
         </nav>
