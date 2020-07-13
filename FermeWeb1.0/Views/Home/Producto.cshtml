@@ -118,18 +118,19 @@
     <div class="grid-wrapper">
         @foreach (var pros in ViewData["ProductosData"] as IEnumerable<FermeWeb1._0.Models.Producto>)
         {
-            <div class="box zone">
-                <img src=@pros.rutadoc width="100" height="300">
-                <label id="nombre_@pros.id">@pros.nombre</label>
-                <label id="preciouni_@pros.id">@pros.preciouni</label>
-                <div id="stock_@pros.id">Stock: @pros.stock</div>
-                <div class="form-group">
-                    <input type="text" id="cantidad_@pros.id" tabindex="2" class="form-control" placeholder="cantidad" />
-                </div>
-                <div class="col-sm-6 col-sm-offset-3">
-                    <input type="button" value="Comprar" onclick="clAgregar('nombre_@pros.id','cantidad_@pros.id','preciouni_@pros.id')" />
-                </div>
+        <div class="box zone">
+            <img src=@pros.rutadoc width="100" height="300">
+            <label id="id_@pros.id">@pros.id</label>
+            <label id="nombre_@pros.id">@pros.nombre</label>
+            <label id="preciouni_@pros.id">@pros.preciouni</label>
+            <div id="stock_@pros.id">Stock: @pros.stock</div>
+            <div class="form-group">
+                <input type="text" id="cantidad_@pros.id" tabindex="2" class="form-control" placeholder="cantidad" />
             </div>
+            <div class="col-sm-6 col-sm-offset-3">
+                <input type="button" value="Comprar" onclick="clAgregar('nombre_@pros.id','cantidad_@pros.id','preciouni_@pros.id','id_@pros.id')" />
+            </div>
+        </div>
         }
     </div>
     <footer class="">Ferreteria FERME 2020</footer>
@@ -149,12 +150,12 @@
 
     //Script carro
     //final carro
-    function clAgregar(nombre, cantidad,preciouni) {        
+    function clAgregar(nombre, cantidad,preciouni,id) {        
         if ($("#" + cantidad).val() == null || $("#" + cantidad).val() == "") {
             alert("Ingrese la cantidad" + $("#" + cantidad).val());
             return;
 
-        } else {
+        } else { 
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("compras", "Producto")',
@@ -163,6 +164,7 @@
                 data: {
                     "prod":
                     {
+                        'id': $("#" + id).text(),
                         'nombre': $("#" + nombre).text(),
                         'cantidad': $("#" + cantidad).val(),
                         'preciouni': $("#" + preciouni).text()

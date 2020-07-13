@@ -40,14 +40,19 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
-        public ActionResult RealizarCompra(String nombre)
+        public ActionResult RealizarCompra()
         {
             var mail = Session["data"].ToString();
             List<Producto> lista = JsonConvert.DeserializeObject<List<Producto>>(getSession());
             for (int i = 0; i < lista.Count; i++)
             {
-
-                //var result = new VentasController().crear(mail,idDetalle,idDoc,idRetiro,idEmp,idFormaPago);
+                int idProd = lista[i].id;
+                int cantidad = lista[i].cantidad;
+                int total = lista[i].preciouni*cantidad;
+                int tipoDoc = 1;
+                string ruta = "F";
+                int idretiro = 1;
+                Boolean result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
             }
             return View();
         }
