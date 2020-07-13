@@ -1,5 +1,6 @@
 ﻿using FermeWeb1._0.Models;
 using Newtonsoft.Json;
+using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -99,6 +100,11 @@ namespace FermeWeb1._0.Controllers
             }
             var value = getSession(); 
             return value;
+        }
+
+        public ActionResult Imprimir()
+        {
+            return new ActionAsPdf("VentaRealizada") { FileName = "Prueba.pdf" };
         }
 
     }

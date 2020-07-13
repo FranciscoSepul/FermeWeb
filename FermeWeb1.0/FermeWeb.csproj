@@ -85,6 +85,9 @@
     <Reference Include="RestClient, Version=3.0.0.21, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestClient.3.0.0.21\lib\net472\RestClient.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -285,6 +288,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Header.cshtml" />
     <Content Include="Imagenes\carrito.png" />
     <Content Include="Imagenes\excel.png" />
@@ -300,6 +304,10 @@
     <Content Include="Imagenes\userMen.png" />
     <Content Include="Javascript\bootstrap.js" />
     <Content Include="Javascript\JQuery.js" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
