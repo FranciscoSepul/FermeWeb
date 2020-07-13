@@ -1,5 +1,6 @@
 ﻿using FermeWeb1._0.Models;
 using Newtonsoft.Json;
+using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -54,7 +55,7 @@ namespace FermeWeb1._0.Controllers
                 int idretiro = 1;
                 string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
             }
-            return View();
+            return View("VentaRealizada");
         }
         [HttpGet]
         public string llenar()
@@ -99,6 +100,11 @@ namespace FermeWeb1._0.Controllers
             }
             var value = getSession(); 
             return value;
+        }
+
+        public ActionResult Imprimir()
+        {
+            return new ActionAsPdf("VentaRealizada") { FileName = "Prueba.pdf" };
         }
 
     }

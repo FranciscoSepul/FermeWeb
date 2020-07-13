@@ -171,6 +171,11 @@
                         'preciouni': $("#" + preciouni).text()
 
                     }
+                },
+                success: function (d) {
+                    if (d != null || d != "") {
+                        alert("Producto Agregado")
+                   }
                 }
             }).done(function (info)
             {
