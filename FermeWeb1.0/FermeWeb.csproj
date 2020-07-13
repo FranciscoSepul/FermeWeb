@@ -328,6 +328,7 @@
     <Content Include="Views\Home\Producto.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Producto\carro.cshtml" />
+    <Content Include="Views\Producto\VentaRealizada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
