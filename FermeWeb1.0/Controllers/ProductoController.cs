@@ -74,7 +74,20 @@ namespace FermeWeb1._0.Controllers
                 string ruta = "F";
                 int idretiro = 1;
                 string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
+<<<<<<< HEAD
                 return View("VentaRealizada");
+=======
+                if (result!= "Exito")
+                {
+
+                }
+                string pdf = new HerramientasController().PdfCompra();
+                string smtp = new HerramientasController().Smtp(mail,"Boleta compra Ferme",pdf);
+                if (smtp!= "exito")
+                {
+
+                }                    
+>>>>>>> 7b71195e5adf369e44ce003d83dcc8feeffec3db
             }
             return View();
         }
