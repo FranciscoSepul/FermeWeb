@@ -41,6 +41,26 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
+        public ActionResult Herramientas()
+        {
+            return View();
+        }
+        public ActionResult Decoracion()
+        {
+            return View();
+        }
+        public ActionResult Muebles()
+        {
+            return View();
+        }
+        public ActionResult AireLibre()
+        {
+            return View();
+        }
+        public ActionResult VentaRealizadas()
+        {
+            return View();
+        }
         public ActionResult RealizarCompra()
         {
             var mail = Session["data"].ToString();
@@ -54,8 +74,9 @@ namespace FermeWeb1._0.Controllers
                 string ruta = "F";
                 int idretiro = 1;
                 string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
+                return View("VentaRealizada");
             }
-            return View("VentaRealizada");
+            return View();
         }
         [HttpGet]
         public string llenar()
@@ -105,7 +126,7 @@ namespace FermeWeb1._0.Controllers
 
         public ActionResult Imprimir()
         {
-            return new ActionAsPdf("carro") { FileName = "Prueba.pdf" };
+            return new ActionAsPdf("Producto") { FileName = "Prueba.pdf" };
         }
 
     }
