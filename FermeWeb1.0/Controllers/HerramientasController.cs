@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FermeWeb1._0.Models;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Net;
@@ -54,10 +56,10 @@ namespace FermeWeb1._0.Controllers
             }
             catch (Exception e)
             {
-                mensaje = "Error al enviar correo "+e.Message;
+                mensaje = "Error al enviar correo " + e.Message;
             }
             return mensaje;
-        } 
+        }
 
         public string sha256()
         {
@@ -119,6 +121,28 @@ namespace FermeWeb1._0.Controllers
                         + "	<br>Ferreteria Ferme | Calle Falsa 123 | Santiago | Santiago | Chile </span>    \n"
                         + "<br>    ";
 
+            return cuerpo;
+        }
+
+        public String PdfCompra(/*List<Producto> Prod, String correo*/)
+        {
+
+            String cuerpo = " <table class=" + "table table-bordered table - striped" + ">< thead >< tr >" +
+                  "< th > Nombre </ th >" +
+                  "< th > Precio </ th > " +
+                  "< th > Cantidad </ th > " +
+                  "< th > Monto </ th > " +
+                  "< th ></ th > " +
+                  "</ tr > " +
+                  "</ thead > " +
+                  "< tbody id = " + "tbdyPedidos" + " ></ tbody > " +
+                  "< tfoot > " +
+                  "< tr > " +
+                  " < td colspan = " + 3 + " class=" + "text-xl-right" + ">Total</td>" +
+                  "<td><label id = " + "lblTotal" + " ></ label ></ td > " +
+                  "</ tr > " +
+                  "</ tfoot > " +
+                  "</ table > ";
             return cuerpo;
         }
     }
