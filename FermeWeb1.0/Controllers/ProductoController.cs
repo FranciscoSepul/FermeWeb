@@ -74,9 +74,9 @@ namespace FermeWeb1._0.Controllers
                 string ruta = "F";
                 int idretiro = 1;
                 string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
-<<<<<<< HEAD
-                return View("VentaRealizada");
-=======
+
+                //return View("VentaRealizada");
+
                 if (result!= "Exito")
                 {
 
@@ -87,7 +87,6 @@ namespace FermeWeb1._0.Controllers
                 {
 
                 }                    
->>>>>>> 7b71195e5adf369e44ce003d83dcc8feeffec3db
             }
             return View();
         }
