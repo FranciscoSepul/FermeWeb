@@ -102,9 +102,10 @@ namespace FermeWeb1._0.Controllers
             return value;
         }
 
+
         public ActionResult Imprimir()
         {
-            return new ActionAsPdf("VentaRealizada") { FileName = "Prueba.pdf" };
+            return new ActionAsPdf("carro") { FileName = "Prueba.pdf" };
         }
 
     }

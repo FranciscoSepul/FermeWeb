@@ -1,8 +1,4 @@
-﻿@model List<FermeWeb1._0.Models.Producto>
-@{
-    ViewBag.Title = "Producto";
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <head>
     <title>Ferreteria FERME</title>
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
@@ -14,38 +10,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/Home/index"><img src="~/Imagenes/FERME Logo.png" class="responsiveImage" /></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Ingrese su busqueda..." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
-        <nav>
-            <a href="/Producto/carro"><img src="~/Imagenes/carrito.png" class="responsiveImage" /></a>
-            <a class="circulo" id="cantidad"></a>
-            @if (Session["data"].ToString() == "null")
-            {
-                <a href="/Cliente/index">LogIn</a>
-            }
-            else
-            {
-
-                <a>&nbsp;Bienvenido @Session["data"].ToString()</a>
-            }
-
-        </nav>
-    </nav>
-
-    <div class="modal-body">
-        Boleta: <br />
-        Nombre : <label id="Nombre"></label><br />
-        Precio :<label id="Precio"></label><br />
-        Cantidad :<label id="Cantidad"></label><br />
-    </div>
-
-    <footer class="">Ferreteria FERME 2020</footer>
+    <a class="navbar-brand" href="/Home/index"><img src="~/Imagenes/FERME Logo.png" class="responsiveImage" /></a></br>
+    <h1>Felicitaciones por su compra </h1><a href="Imprimir">Descargar PDF.</a>
 </body>
