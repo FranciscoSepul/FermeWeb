@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Ferreteria FERME</title>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody id="tbdyPedidos"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-xl-right">Total</td>
+                <td><label id="lblTotal"></label></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+<script>
+
+    $(function () {
+
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("llenar", "Producto")',
+            dataType: "aplication/json; charset=utf-8",
+            dataType: "json",
+        }).done(function (info) {
+            if (typeof info != "undefined") {
+
+                for (var i = 0; i < info.length; i++) {
+                    var total = info[i].preciouni * info[i].cantidad;
+                    var tbody = "<tr>";
+                    tbody += "<td>" + info[i].nombre + "</td>";
+                    tbody += "<td>" + info[i].preciouni + "</td>";
+                    tbody += "<td>" + info[i].cantidad + "</td>";
+                    tbody += "<td>" + total + "</td>" + "</td>";
+                    tbody += "<td>";
+                    tbody += "<input type='button' id='btnEditar' value='Editar' class='btn-sm btn-warning'/>";
+                    tbody += "&nbsp;<input type='button' id='btnEliminar' value='Eliminar' class='btn-sm btn-danger' />";
+                    tbody += "</tr>";
+                    $("#tbdyPedidos").append(tbody);
+                    fnmsumar();
+                };
+
+            }
+        });
+    });
+        function fnmsumar() {
+            var total = 0;
+            $("#tbdyPedidos").find("tr").each(function () {
+                var monto = parseFloat($(this).find("td").eq(3).text())
+                total += monto;
+            });
+            $("#lblTotal").text(total);
+        }
+</script>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Ferreteria FERME</title>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<<<<<<< HEAD:FermeWeb1.0/Views/Producto/RealizarCompra.cshtml
+    <a class="navbar-brand" href="/Home/index"><img src="~/Imagenes/FERME Logo.png" class="responsiveImage" /></a></br>
+    <h1>Felicitaciones por su compra </h1><a href="/Producto/PdfCompra">Descargar PDF.</a>
+=======
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/Home/index"><img src="~/Imagenes/FERME Logo.png" class="responsiveImage" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Ingrese su busqueda..." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        <nav>
+            <a href="/Producto/carro"><img src="~/Imagenes/carrito.png" class="responsiveImage" /></a>
+            <a class="circulo" id="cantidad"></a>
+            @if (Session["data"].ToString() == "null")
+            {
+                <a href="/Cliente/index">LogIn</a>
+            }
+            else
+            {
+
+                <a>&nbsp;Bienvenido @Session["data"].ToString()</a>
+            }
+
+        </nav>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Producto/Herramientas">Herramientas y Maquinaria</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Producto/AireLibre">Aire Libre y Jardín</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Producto/Decoracion">Decoración e Iluminación</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Producto/Muebles">Muebles y Organización</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <p align="center"> <h1>Felicitaciones por su compra </h1> </p> <p align="center">   <a href="Imprimir">Descargar PDF</a> </p> <p align="center">  <a href="/Home/index">Volver al menú principal</a></p>
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62:FermeWeb1.0/Views/Producto/VentaRealizada.cshtml
+</body>

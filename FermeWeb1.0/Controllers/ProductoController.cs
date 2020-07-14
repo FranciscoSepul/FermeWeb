@@ -1,14 +1,19 @@
 ﻿using FermeWeb1._0.Models;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.collection;
 using Newtonsoft.Json;
-using Rotativa;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.Services.Description;
 using System.Web.UI;
 
 namespace FermeWeb1._0.Controllers
@@ -41,6 +46,9 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
+
+=======
         public ActionResult Herramientas()
         {
             return View();
@@ -61,6 +69,7 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
         public ActionResult RealizarCompra()
         {
             var mail = Session["data"].ToString();
@@ -69,24 +78,35 @@ namespace FermeWeb1._0.Controllers
             {
                 int idProd = lista[i].id;
                 int cantidad = lista[i].cantidad;
-                int total = lista[i].preciouni*cantidad;
+                int total = lista[i].preciouni * cantidad;
                 int tipoDoc = 1;
                 string ruta = "F";
                 int idretiro = 1;
+<<<<<<< HEAD
+                string result = new VentasController().crear(mail, idProd, cantidad, total, tipoDoc, ruta, idretiro);
+                if (result != "Exito")
+=======
                 string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
 
                 //return View("VentaRealizada");
 
                 if (result!= "Exito")
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
                 {
-
                 }
+<<<<<<< HEAD
+=======
                 string pdf = new HerramientasController().PdfCompra();
                 string smtp = new HerramientasController().Smtp(mail,"Boleta compra Ferme",pdf);
                 if (smtp!= "exito")
                 {
 
                 }                    
+<<<<<<< HEAD
+=======
+>>>>>>> 7b71195e5adf369e44ce003d83dcc8feeffec3db
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
+>>>>>>> 361f232c55f162ea46a2e86b54cc169e75a63e14
             }
             return View();
         }
@@ -104,7 +124,7 @@ namespace FermeWeb1._0.Controllers
         public string getSession()
         {
             string resp;
-            if (System.Web.HttpContext.Current.Session["ListaProd"]==null)
+            if (System.Web.HttpContext.Current.Session["ListaProd"] == null)
             {
                 resp = null;
             }
@@ -113,7 +133,7 @@ namespace FermeWeb1._0.Controllers
                 resp = System.Web.HttpContext.Current.Session["ListaProd"].ToString();
             }
             return resp;
-           
+
         }
 
         [HttpPost]
@@ -131,15 +151,138 @@ namespace FermeWeb1._0.Controllers
                 lista.Add(prod);
                 setSessiones(lista);
             }
-            var value = getSession(); 
+            var value = getSession();
             return value;
         }
-
-
-        public ActionResult Imprimir()
+        public ActionResult Boleta()
         {
-            return new ActionAsPdf("Producto") { FileName = "Prueba.pdf" };
+            return View("Boleta");
         }
 
+        public ActionResult PdfCompra()
+        {
+<<<<<<< HEAD
+            List<Producto> lista = JsonConvert.DeserializeObject<List<Producto>>(getSession());
+
+            //FileStream fs = new FileStream("c://pdf/reporte.pdf", FileMode.Create);
+            MemoryStream ms = new MemoryStream();
+            ms.WriteTo(Response.OutputStream);
+            Document documento = new Document(iTextSharp.text.PageSize.LETTER,30f,20f,50f,40f);
+            PdfWriter pw = PdfWriter.GetInstance(documento,ms);
+            string pathImage = Server.MapPath("/Imagenes/FERME Logo.png");
+            pw.PageEvent = new HeaderFotter(pathImage);
+            documento.Open();
+            
+            PdfPTable table = new PdfPTable(4);
+            int calculo = 0;
+            int suma = 0;
+            documento.Add( Chunk.NEWLINE );
+
+            documento.Add(new Paragraph("Gracias por por preferir Ferreterias ferme a continuacion se detallaran los productos comprados en nuestra tienda web "));
+
+            documento.Add(Chunk.NEWLINE);
+            PdfPCell _cell = new PdfPCell();
+            _cell = new PdfPCell(new Paragraph("Nombre"));
+            _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(_cell);
+            _cell = new PdfPCell(new Paragraph("Cantidad"));
+            _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(_cell);
+            _cell = new PdfPCell(new Paragraph("Precio Unitario"));
+            _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(_cell);
+            _cell = new PdfPCell(new Paragraph("Monto"));
+            _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(_cell);
+
+            foreach (var item in lista)
+            {
+                
+                calculo = item.preciouni * item.cantidad;
+                suma += calculo;
+                _cell = new PdfPCell(new Paragraph(item.nombre));
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+                _cell = new PdfPCell(new Paragraph(item.cantidad.ToString()));
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+                _cell = new PdfPCell(new Paragraph(item.preciouni.ToString()));
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+                _cell = new PdfPCell(new Paragraph(calculo.ToString()));
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(_cell);
+            }
+            documento.Add(Chunk.NEWLINE);
+            PdfPCell _celldas = new PdfPCell();
+            _celldas = new PdfPCell(new Paragraph(""));
+            _celldas.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(_celldas);
+            _celldas = new PdfPCell(new Paragraph(""));
+            _celldas.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(_celldas);
+            _celldas = new PdfPCell(new Paragraph("Total :"));
+            _celldas.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(_celldas);
+            _celldas = new PdfPCell(new Paragraph(suma));
+            _celldas.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(_celldas);
+            documento.Add(table);
+            documento.Close();
+
+            byte[] byteStream = ms.ToArray();
+            ms = new MemoryStream();
+            ms.Write(byteStream, 0, byteStream.Length);
+            ms.Position = 0;
+
+
+            return new FileStreamResult(ms,"application/pdf");
+=======
+            return new ActionAsPdf("Producto") { FileName = "Prueba.pdf" };
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
+        }
+        class HeaderFotter : PdfPageEventHelper
+        {
+            string phatIma = null;
+            public HeaderFotter(string logo)
+            {
+                phatIma = logo;
+            }
+            public override void OnEndPage(PdfWriter writer, Document document)
+            {
+                //base.OnEndPage(writer, document);
+                PdfPTable tbHead = new PdfPTable(3);
+                tbHead.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
+                tbHead.DefaultCell.Border = 0;
+
+                tbHead.AddCell(new Paragraph());
+                document.Add(Chunk.NEWLINE);
+                PdfPCell _cell = new PdfPCell(new Paragraph("Boleta Electronica"));
+                _cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                tbHead.AddCell(_cell);
+                tbHead.AddCell(new Paragraph());
+
+                tbHead.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetTop(document.TopMargin)+40, writer.DirectContent);
+
+                PdfPTable tbfooter = new PdfPTable(3);
+                tbfooter.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
+                tbfooter.DefaultCell.Border = 0;
+
+                tbfooter.AddCell(new Paragraph());
+                PdfPCell _celle = new PdfPCell(new Paragraph("Ferreteria Ferme Siempre con los chilenos"));
+                _celle.HorizontalAlignment = Element.ALIGN_CENTER;
+                tbfooter.AddCell(_celle);
+                tbfooter.AddCell(new Paragraph());
+                tbfooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) -5, writer.DirectContent);
+
+
+
+                Image logo = Image.GetInstance(phatIma);
+                logo.SetAbsolutePosition(document.LeftMargin,writer.PageSize.GetTop(document.TopMargin)+30);
+                logo.ScaleAbsolute(50f, 50f);
+                document.Add(logo);
+
+            }
+        }
     }
 }

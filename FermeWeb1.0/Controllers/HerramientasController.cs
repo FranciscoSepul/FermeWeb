@@ -124,26 +124,5 @@ namespace FermeWeb1._0.Controllers
             return cuerpo;
         }
 
-        public String PdfCompra(/*List<Producto> Prod, String correo*/)
-        {
-
-            String cuerpo = " <table class=" + "table table-bordered table - striped" + ">< thead >< tr >" +
-                  "< th > Nombre </ th >" +
-                  "< th > Precio </ th > " +
-                  "< th > Cantidad </ th > " +
-                  "< th > Monto </ th > " +
-                  "< th ></ th > " +
-                  "</ tr > " +
-                  "</ thead > " +
-                  "< tbody id = " + "tbdyPedidos" + " ></ tbody > " +
-                  "< tfoot > " +
-                  "< tr > " +
-                  " < td colspan = " + 3 + " class=" + "text-xl-right" + ">Total</td>" +
-                  "<td><label id = " + "lblTotal" + " ></ label ></ td > " +
-                  "</ tr > " +
-                  "</ tfoot > " +
-                  "</ table > ";
-            return cuerpo;
-        }
     }
 }
