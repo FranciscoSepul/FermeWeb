@@ -46,7 +46,30 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
 
+=======
+        public ActionResult Herramientas()
+        {
+            return View();
+        }
+        public ActionResult Decoracion()
+        {
+            return View();
+        }
+        public ActionResult Muebles()
+        {
+            return View();
+        }
+        public ActionResult AireLibre()
+        {
+            return View();
+        }
+        public ActionResult VentaRealizadas()
+        {
+            return View();
+        }
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
         public ActionResult RealizarCompra()
         {
             var mail = Session["data"].ToString();
@@ -59,10 +82,28 @@ namespace FermeWeb1._0.Controllers
                 int tipoDoc = 1;
                 string ruta = "F";
                 int idretiro = 1;
+<<<<<<< HEAD
                 string result = new VentasController().crear(mail, idProd, cantidad, total, tipoDoc, ruta, idretiro);
                 if (result != "Exito")
+=======
+                string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
+<<<<<<< HEAD
+                return View("VentaRealizada");
+=======
+                if (result!= "Exito")
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
                 {
                 }
+<<<<<<< HEAD
+=======
+                string pdf = new HerramientasController().PdfCompra();
+                string smtp = new HerramientasController().Smtp(mail,"Boleta compra Ferme",pdf);
+                if (smtp!= "exito")
+                {
+
+                }                    
+>>>>>>> 7b71195e5adf369e44ce003d83dcc8feeffec3db
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
             }
             return View();
         }
@@ -117,6 +158,7 @@ namespace FermeWeb1._0.Controllers
 
         public ActionResult PdfCompra()
         {
+<<<<<<< HEAD
             List<Producto> lista = JsonConvert.DeserializeObject<List<Producto>>(getSession());
 
             //FileStream fs = new FileStream("c://pdf/reporte.pdf", FileMode.Create);
@@ -192,6 +234,9 @@ namespace FermeWeb1._0.Controllers
 
 
             return new FileStreamResult(ms,"application/pdf");
+=======
+            return new ActionAsPdf("Producto") { FileName = "Prueba.pdf" };
+>>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
         }
         class HeaderFotter : PdfPageEventHelper
         {
