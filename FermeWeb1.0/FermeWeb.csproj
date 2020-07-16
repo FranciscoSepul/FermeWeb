@@ -332,15 +332,11 @@
     <Content Include="Views\Home\Producto.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Producto\carro.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Producto\RealizarCompra.cshtml" />
-=======
-    <Content Include="Views\Producto\VentaRealizada.cshtml" />
     <Content Include="Views\Producto\Herramientas.cshtml" />
     <Content Include="Views\Producto\AireLibre.cshtml" />
     <Content Include="Views\Producto\Decoracion.cshtml" />
     <Content Include="Views\Producto\Muebles.cshtml" />
->>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

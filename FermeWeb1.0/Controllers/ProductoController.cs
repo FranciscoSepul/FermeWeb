@@ -46,9 +46,7 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
 
-=======
         public ActionResult Herramientas()
         {
             return View();
@@ -69,7 +67,7 @@ namespace FermeWeb1._0.Controllers
         {
             return View();
         }
->>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
+
         public ActionResult RealizarCompra()
         {
             var mail = Session["data"].ToString();
@@ -82,31 +80,12 @@ namespace FermeWeb1._0.Controllers
                 int tipoDoc = 1;
                 string ruta = "F";
                 int idretiro = 1;
-<<<<<<< HEAD
+
                 string result = new VentasController().crear(mail, idProd, cantidad, total, tipoDoc, ruta, idretiro);
                 if (result != "Exito")
-=======
-                string result = new VentasController().crear(mail,idProd,cantidad,total,tipoDoc,ruta,idretiro);
-
-                //return View("VentaRealizada");
-
-                if (result!= "Exito")
->>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
-                {
-                }
-<<<<<<< HEAD
-=======
-                string pdf = new HerramientasController().PdfCompra();
-                string smtp = new HerramientasController().Smtp(mail,"Boleta compra Ferme",pdf);
-                if (smtp!= "exito")
                 {
 
-                }                    
-<<<<<<< HEAD
-=======
->>>>>>> 7b71195e5adf369e44ce003d83dcc8feeffec3db
->>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
->>>>>>> 361f232c55f162ea46a2e86b54cc169e75a63e14
+                }   
             }
             return View();
         }
@@ -161,7 +140,7 @@ namespace FermeWeb1._0.Controllers
 
         public ActionResult PdfCompra()
         {
-<<<<<<< HEAD
+
             List<Producto> lista = JsonConvert.DeserializeObject<List<Producto>>(getSession());
 
             //FileStream fs = new FileStream("c://pdf/reporte.pdf", FileMode.Create);
@@ -221,10 +200,10 @@ namespace FermeWeb1._0.Controllers
             _celldas = new PdfPCell(new Paragraph(""));
             _celldas.HorizontalAlignment = Element.ALIGN_CENTER;
             table.AddCell(_celldas);
-            _celldas = new PdfPCell(new Paragraph("Total :"));
+            _celldas = new PdfPCell(new Paragraph("Total:"));
             _celldas.HorizontalAlignment = Element.ALIGN_CENTER;
             table.AddCell(_celldas);
-            _celldas = new PdfPCell(new Paragraph(suma));
+            _celldas = new PdfPCell(new Paragraph(suma.ToString()));
             _celldas.HorizontalAlignment = Element.ALIGN_CENTER;
             table.AddCell(_celldas);
             documento.Add(table);
@@ -236,10 +215,8 @@ namespace FermeWeb1._0.Controllers
             ms.Position = 0;
 
 
-            return new FileStreamResult(ms,"application/pdf");
-=======
-            return new ActionAsPdf("Producto") { FileName = "Prueba.pdf" };
->>>>>>> b940a836be635efdab6a69832f108dd3a39c1e62
+            return new FileStreamResult(ms, "application/pdf");
+
         }
         class HeaderFotter : PdfPageEventHelper
         {
@@ -278,7 +255,7 @@ namespace FermeWeb1._0.Controllers
 
 
                 Image logo = Image.GetInstance(phatIma);
-                logo.SetAbsolutePosition(document.LeftMargin,writer.PageSize.GetTop(document.TopMargin)+30);
+                logo.SetAbsolutePosition(document.LeftMargin,writer.PageSize.GetTop(document.TopMargin)+1);
                 logo.ScaleAbsolute(50f, 50f);
                 document.Add(logo);
 
